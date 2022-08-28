@@ -48,6 +48,10 @@ PRODUCT_COPY_FILES += \
 # Fingerprint
 PRODUCT_PACKAGES += \
     android.hardware.biometrics.fingerprint@2.1-service.samsung
+    
+# Power
+PRODUCT_PACKAGES += \
+    android.hardware.power@1.0-service.exynos
 
 # NFC
 PRODUCT_PACKAGES += \
