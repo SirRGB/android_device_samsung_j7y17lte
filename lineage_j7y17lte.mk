@@ -25,6 +25,10 @@ $(call inherit-product, device/samsung/j7y17lte/device.mk)
 # Inherit some common Lineage stuff.
 $(call inherit-product, vendor/lineage/config/common_full_phone.mk)
 
+# Bootanimation
+TARGET_SCREEN_HEIGHT := 1920
+TARGET_SCREEN_WIDTH := 1080
+
 # Device identifier. This must come after all inclusions
 PRODUCT_DEVICE := j7y17lte
 PRODUCT_NAME := lineage_j7y17lte
@@ -35,6 +39,3 @@ PRODUCT_MANUFACTURER := samsung
 TARGET_VENDOR := samsung
 
 PRODUCT_GMS_CLIENTID_BASE := android-samsung
-
-TARGET_BOOT_ANIMATION_RES := 1080
-TARGET_GAPPS_ARCH := arm64
