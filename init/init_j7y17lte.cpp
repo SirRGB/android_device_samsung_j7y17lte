@@ -38,8 +38,8 @@
 #include "vendor_init.h"
 #include "property_service.h"
 
-using android::base::GetProperty;
-using android::init::property_set;
+using ::android::base::GetProperty;
+using ::android::base::SetProperty;
 
 void property_override(const std::string& name, const std::string& value)
 {
@@ -73,15 +73,15 @@ void property_override_quad(const std::string& boot_prop, const std::string& pro
 }
 
 void init_dsds() {
-    property_set("ro.vendor.multisim.set_audio_params", "true");
-    property_set("ro.vendor.multisim.simslotcount", "2");
-    property_set("persist.radio.multisim.config", "dsds");
+    SetProperty("ro.vendor.multisim.set_audio_params", "true");
+    SetProperty("ro.vendor.multisim.simslotcount", "2");
+    SetProperty("persist.radio.multisim.config", "dsds");
 }
 
 void vendor_load_properties()
 {
     // Init a dummy BT MAC address, will be overwritten later
-    property_set("ro.boot.btmacaddr", "00:00:00:00:00:00");
+    SetProperty("ro.boot.btmacaddr", "00:00:00:00:00:00");
 
     std::string bootloader = GetProperty("ro.bootloader","");
 
@@ -89,7 +89,7 @@ void vendor_load_properties()
     /* SM-J730F */
         property_override_quad("ro.product.model", "ro.product.odm.model", "ro.product.system.model", "ro.product.vendor.model", "SM-J730F");
         property_override_quad("ro.product.name", "ro.product.odm.name", "ro.product.system.name", "ro.product.vendor.name", "j7y17ltexx");
-        
+
         init_dsds();
 
     } else if (bootloader.find("J730G") == 0) {
@@ -121,4 +121,3 @@ void vendor_load_properties()
     std::string device = GetProperty("ro.product.device", "");
     LOG(ERROR) << "Found bootloader id %s setting build properties for %s device\n" << bootloader.c_str() << device.c_str();
 }
-
